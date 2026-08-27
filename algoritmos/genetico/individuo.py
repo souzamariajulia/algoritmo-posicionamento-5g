@@ -33,13 +33,3 @@ def avaliar_populacao(populacao: list[Individuo], pontos_demanda: list[tuple[flo
 
     for individuo in populacao:
         individuo.fitness = calcular_fitness(individuo, pontos_demanda, raio_cobertura)
-
-
-def selecionar_individuos(populacao: list[Individuo], quantidade: int, gerador: random.Random) -> list[Individuo]:
-
-    pesos = [individuo.fitness for individuo in populacao]
-
-    if sum(pesos) == 0:
-        pesos = None
-
-    return gerador.choices(populacao, weights=pesos, k=quantidade)
